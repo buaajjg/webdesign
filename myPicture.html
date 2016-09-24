@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head >
+    <meta charset="UTF-8">
+    <title>My Picture</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link id="importstyle1" rel="stylesheet" href="css.css">
+
+    <script type="text/javascript">
+        var cookie=document.cookie;
+        var css;
+        if(cookie==null||cookie==""){
+            document.getElementById("importstyle").href="css.css";
+
+        }
+        else{
+            var index= cookie.indexOf("=");
+            css=cookie.substr(index+1);
+            document.getElementById("importstyle1").href=css;
+        }
+
+    </script>
+</head>
+<body>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<figure >
+    <img class="pic"  src="http://i.imgur.com/eS94w.jpg" alt="my photo"/>
+    <figcaption class="pic-cap" >A young boy,Haha!</figcaption>
+</figure>
+
+<figure >
+    <img class="pic"  src="http://www.petsparadise.it/wp-content/gallery/leleganza-dellhusky/bigstock-husky-puppy-27271826.jpg" alt="my photo"/>
+    <figcaption class="pic-cap" >Growing up!</figcaption>
+</figure>
+
+<figure >
+    <img class="pic"  src="https://i.ytimg.com/vi/vqoJ8q87TcY/maxresdefault.jpg" alt="my photo"/>
+    <figcaption class="pic-cap" >With my friend, guess who is me!</figcaption>
+</figure>
+
+<figure >
+    <img class="pic"  src="http://buzzsharer.com/wp-content/uploads/2015/06/cute-husky.jpg" alt="my photo"/>
+    <figcaption class="pic-cap" >Say hello to my friends!</figcaption>
+</figure>
+<br>
+<br>
+<img class="spin" src="http://hovertree.com/texiao/css3/9/images/fc.png"/>
+<div class="header">
+    <h1 class="left"><i class="fa fa-paw" aria-hidden="true"></i>&nbsp;Hi, Enjoy my beatiful pictures!</h1>
+    <br>
+    <nav class="menu">
+        <a class="menu-item" href="index.html"> Home</a> &nbsp;
+        <a class="menu-item" href="myPicture.html"> My Picture</a> &nbsp;
+        <a class="menu-item" href="contact.html"> Contact</a>
+    </nav>
+</div>
+
+
+<footer class="footer">
+    <span class="left" style="bottom: -15px">Copyright © 2016 JigangJia</span>
+    <span class="right"> Developed by <a class="mail" href="mailto:jia.jig@husky.neu.edu">Jigang Jia</a></span>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+
+
+
+.footer{
+    background-color: bisque;
+    color: darkslategrey;
+    position: fixed;
+    height:48px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+
+}
+.header{
+    background-color: bisque;
+    color:darkslategrey;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left:0;
+}
+
+body {
+    background-image: url('http://www.clipartkid.com/images/569/blue-background-scrub-masters-commercial-cleaning-inc-B7Uop0-clipart.jpg');
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+button{
+    color: darkslategrey;
+    background-color: bisque;
+    border-color: white;
+    width:140px;
+    height: 45px;
+    cursor: pointer;
+    border-radius: 4px;
+
+
+}
+button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.left{
+    text-align: left;
+    color:darkslategrey;
+    margin: 15px;
+    position: relative;
+    left:20%;
+    border:none;
+}
+
+.right{
+    text-align: left;
+    color:darkslategrey;
+    margin: 15px;
+    position: relative;
+    left:50%;
+    bottom: -15px;
+}
+.mail{
+    color:dodgerblue;
+}
+
+
+.menu{
+   font-size: x-large;
+    position: relative;
+    left:20%;
+}
+.menu-item{
+    color: #252a37;
+}
+
+body{
+    background-color: antiquewhite;
+    background-attachment:scroll;
+}
+.img{
+    position: absolute;
+    left:600px;
+    height: 300px;
+}
+
+
+.move {
+    position: relative;
+    -webkit-animation-name: rectmove; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 14s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-name: rectmove;
+    animation-duration: 14s;
+    animation-iteration-count: infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rectmove {
+    0%   { left:0px; top:0px;}
+    25%  { left:200px; top:0px;}
+    50%  {left:200px; top:50px;}
+    75%  { left:0px; top:50px;}
+    100% { left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes rectmove {
+    0%   { left:0px; top:0px;}
+    25%  { left:200px; top:0px;}
+    50%  {left:200px; top:50px;}
+    75%  { left:0px; top:50px;}
+    100% { left:0px; top:0px;}
+}
+.move:hover {
+    -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+    animation-play-state: paused;
+
+}
+
+
+
+
+
+.cap{
+    color:yellow;
+    position: relative;
+    left:600px;
+    top:300px;
+    font-size: larger;
+}
+.intro{
+    position: absolute;
+    left:23%;
+    right:20%;
+    top:490px;
+    color:greenyellow;
+
+}
+
+.pic{
+    position: relative;
+    left:20%;
+    width: 600px;
+}
+.pic-cap{
+    position: relative;
+    left:20%;
+    color: chartreuse;
+}
+li{
+    list-style-type:none;
+
+}
+i{
+    color: saddlebrown;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+}
+li:hover i{
+    color: yellow;
+    font-size: large;
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(180deg);
+}
+.frame{
+    position: absolute;
+    left:1100px;
+    top:160px;
+    width:200px;
+    height: auto;
+    margin: 100px;
+
+    border-style: double;
+    border-width: 20px 20px 20px 20px;
+    border-color: chocolate;
+
+    -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(20deg); /* Safari */
+    transform: rotate(20deg);
+
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+}
+.frame:hover{
+    -webkit-transform: rotate(-30deg); /* Safari */
+    transform: rotate(-30deg);
+
+}
+.live{
+    margin-left:350px;
+    color: yellow ;
+    font-size:25px;
+    font-weight:bold
+}
+.live:hover{
+    color: coral ;
+
+}
+.spin{
+    position: fixed;
+    left:1000px;
+    top:200px;
+
+    -webkit-animation-name: spinmove; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 14s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-name: spinmove;
+    animation-duration: 14s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-webkit-keyframes spinmove {
+    0%   { transform: rotate(0deg);}
+    25%  { transform: rotate(90deg);}
+    50%  {transform: rotate(180deg);}
+    75%  { transform: rotate(270deg);}
+    100% { transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes spinmove {
+    0%   { transform: rotate(0deg);}
+    25%  { transform: rotate(90deg);}
+    50%  {transform: rotate(180deg);}
+    75%  { transform: rotate(270deg);}
+    100% { transform: rotate(360deg);}
+}
+.spin:hover{
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+}
+
+
+
+
+
+
+
+
+
+
