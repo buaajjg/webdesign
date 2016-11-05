@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width , initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"   href="theme.css" />
+    <link id="style" rel="stylesheet" media="screen and (max-device-width: 500px)"  href="theme1.css">
+    <link rel="stylesheet" type="text/css"  media="screen and (min-width: 500px) and (max-device-width: 800px)"  href="theme2.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="contactScript.js"></script>
+    <title>Contact</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="padding: 3px 25px; font-size: 30px;" href="#"><i class="fa fa-paw"></i></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li ><a href="page1.html">Home</a></li>
+                <li><a href="page2.html">Picture</a></li>
+                <li class="active"><a href="#">Contact</a></li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
+
+
+    <div class="flex">
+        <div class="flex-item-full">
+            <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAKjaA9aVQRKUx67YPWwON6O1INiUXV0mc&v=3.exp'></script>
+            <div id='gmap_canvas' style='width:100%;height: 400px;'></div>
+            <script type='text/javascript'>
+                init_map();
+            </script>
+        </div>
+
+
+        <div class="flex-item">
+            <h2>Contact Information</h2>
+            <ul class="">
+                <li><i class="fa fa-map-pin" ></i><strong>Address:</strong> <span>610Galer St, Seattle WA 98109</span></li>
+                <li><i class="fa fa-phone" ></i><strong>Phone:</strong> <span>1-206-228-6888</span></li>
+                <li><i class="fa fa-envelope-o" ></i><strong>Email:</strong> husky@husky.neu.edu</li>
+                <li><i class="fa fa-laptop" ></i><strong>Web:</strong> www.husky.com</li>
+            </ul>
+
+        </div>
+
+        <div class="flex-item" >
+            <h2>Write me a message</h2>
+            <input class="text" id="name" type="text" name="name" placeholder="name"/>
+            <input class="text" id="email" type="email" name="email" placeholder="email"/>
+            <textarea class="area" id="ta" rows="8"  placeholder="message"></textarea>
+            <button class="send" onclick="sendmessage()">Send</button>
+            <span id="message"></span>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer">
+        <span class="" >Copyright © 2016 JigangJia</span><span id="br"></span>
+        <span class=""> Developed by <a class="" href="mailto:jia.jig@husky.neu.edu">Jigang Jia</a></span>
+        <button class="themebn" >Theme</button>
+    </footer>
+</body>
+</html>

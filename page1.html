@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width , initial-scale=1.0">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css"   href="theme.css" />
+    <link id="style" rel="stylesheet" media="screen and (max-device-width: 500px)"  href="theme1.css">
+    <link rel="stylesheet" type="text/css"  media="screen and (min-width: 500px) and (max-device-width: 800px)"  href="theme2.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="contactScript.js"></script>
+    <script >
+        $(function(){
+            $("form").submit(function(){
+                var v = $("#txtSearchKeyword").val();
+                $("#searchTextTest").textSearch(v);
+                 return false;
+            });
+        });
+
+
+        (function($){
+            $.fn.textSearch = function(str,options){
+                var defaults = {
+                    divFlag: true,
+                    divStr: " ",
+                    markClass: "",
+                    markColor: "red",
+                    nullReport: true,
+                    callback: function(){
+                        return false;
+                    }
+                };
+                var sets = $.extend({}, defaults, options || {}), clStr;
+                if(sets.markClass){
+                    clStr = "class='"+sets.markClass+"'";
+                }else{
+                    clStr = "style='color:"+sets.markColor+";'";
+                }
+
+                //对前一次高亮处理的文字还原
+                $("span[rel='mark']").each(function() {
+                    var text = document.createTextNode($(this).text());
+                    $(this).replaceWith($(text));
+                });
+
+
+                //字符串正则表达式关键字转化
+                $.regTrim = function(s){
+                    var imp = /[\^\.\\\|\(\)\*\+\-\$\[\]\?]/g;
+                    var imp_c = {};
+                    imp_c["^"] = "\\^";
+                    imp_c["."] = "\\.";
+                    imp_c["\\"] = "\\\\";
+                    imp_c["|"] = "\\|";
+                    imp_c["("] = "\\(";
+                    imp_c[")"] = "\\)";
+                    imp_c["*"] = "\\*";
+                    imp_c["+"] = "\\+";
+                    imp_c["-"] = "\\-";
+                    imp_c["$"] = "\$";
+                    imp_c["["] = "\\[";
+                    imp_c["]"] = "\\]";
+                    imp_c["?"] = "\\?";
+                    s = s.replace(imp,function(o){
+                        return imp_c[o];
+                    });
+                    return s;
+                };
+                $(this).each(function(){
+                    var t = $(this);
+                    str = $.trim(str);
+                    if(str === ""){
+                        alert("Key word is void");
+                        return false;
+                    }else{
+                        //将关键字push到数组之中
+                        var arr = [];
+                        if(sets.divFlag){
+                            arr = str.split(sets.divStr);
+                        }else{
+                            arr.push(str);
+                        }
+                    }
+                    var v_html = t.html();
+                    //删除注释
+                    v_html = v_html.replace(/<!--(?:.*)\-->/g,"");
+
+                    //将HTML代码支离为HTML片段和文字片段，其中文字片段用于正则替换处理，而HTML片段置之不理
+                    var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+                    var a = v_html.match(tags), test = 0;
+                    $.each(a, function(i, c){
+                        if(!/<(?:.|\s)*?>/.test(c)){//非标签
+                            //开始执行替换
+                            $.each(arr,function(index, con){
+                                if(con === ""){return;}
+                                var reg = new RegExp($.regTrim(con), "g");
+                                if(reg.test(c)){
+                                    //正则替换
+                                    c = c.replace(reg,"♂"+con+"♀");
+                                    test = 1;
+                                }
+                            });
+                            c = c.replace(/♂/g,"<span rel='mark' "+clStr+">").replace(/♀/g,"</span>");
+                            a[i] = c;
+                        }
+                    });
+                    //将支离数组重新组成字符串
+                    var new_html = a.join("");
+
+                    $(this).html(new_html);
+
+                    if(test === 0 && sets.nullReport){
+                        alert("没有搜索结果");
+                        return false;
+                    }
+
+                    //执行回调函数
+                    sets.callback();
+                });
+            };
+        })(jQuery);
+
+    </script>
+    <title>Home</title>
+</head>
+<body id="body" >
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"  style="padding: 3px 25px; font-size: 30px;" href="#"><i class="fa fa-paw"></i></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="page2.html">Picture</a></li>
+                    <li><a href="page3.html">Contact</a></li>
+                    <li>
+                        <form class="navbar-form navbar-left">
+                            <div class="form-group">
+                                <input type="input" id="txtSearchKeyword" class="form-control" placeholder="Search">
+                                <input type="submit" class="btn btn-primary" id="btn" value="search"  />
+                            </div>
+
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+
+<div id="searchTextTest" class="flex">
+
+    <div class="flex-item">
+        <img class="portrait" src="http://www.dog-names-and-more.com/images/Sib-husky.jpg" alt="my picture"/>
+    </div>
+
+
+    <div class="flex-item">
+        <h2 class="">My Profile</h2>
+        <ul class="">
+            <li class=""><i class="fa fa-star-o" ></i><strong>MyName</strong>: Doudou</li>
+            <li class=""><i class="fa fa-birthday-cake"></i><strong>BirthDay</strong>: 2010-06-22 </li>
+            <li class=""><i class="fa fa-venus-mars" ></i><strong>Breed</strong>:Husky</li>
+            <li class=""><i class="fa fa-location-arrow" ></i><strong>Hometown</strong>:Seattle</li>
+            <li class=""><i class="fa fa-paw" ></i><strong>Hobby</strong>:Run Run Run</li>
+        </ul>
+    </div>
+
+    <div class="flex-item">
+        <h2>About Me</h2>
+        <p>
+            Hi, My name is Houhou and I am a Husky pup, am I cute!  I brings so much joy into my life and
+            helps my friend not to be so bored anymore.  I keep my owner so busy and is a great way for him to stop thinking about food all the time and
+            do something  fun.  I used to feel so lonely and bored and I think I ate just because I was bored, not because I was hungry.
+            But now, Im too busy to eat!  I get lots more exercise with my friends.
+        </p>
+    </div>
+
+    <div class="flex-item">
+        <iframe class="video" src="https://www.youtube.com/embed/oIRQo1zxSrc" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+</div>
+
+<footer class="footer">
+    <span >Copyright © 2016 JigangJia</span> <span id="br"></span>
+    <span > Developed by <a class="" href="mailto:jia.jig@husky.neu.edu">Jigang Jia</a></span>
+    <button class="themebn" >Theme</button>
+</footer>
+</body>
+</html>
